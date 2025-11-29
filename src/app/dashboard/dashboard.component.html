@@ -1,0 +1,82 @@
+<div class="dashboard-container">
+  <header>
+    <h1>🌍 Population Dashboard</h1>
+    <p>Interactive visualization of global population data</p>
+  </header>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading data...</p>
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <div class="filter-group">
+        <label for="countrySelect">Select Country:</label>
+        <select 
+          id="countrySelect" 
+          [(ngModel)]="selectedCountry" 
+          (change)="onFilterChange(); updateLineChart()">
+          <option value="">All Countries</option>
+          <option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="yearSelect">Select Year:</label>
+        <select 
+          id="yearSelect" 
+          [(ngModel)]="selectedYear" 
+          (change)="onFilterChange(); updateBarChart()">
+          <option [value]="0">All Years</option>
+          <option *ngFor="let year of years" [value]="year">
+            {{ year }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Data Table Section -->
+    <div class="table-section">
+      <h2>Data Table ({{ filteredData.length }} records)</h2>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Country Name</th>
+              <th>Country Code</th>
+              <th>Year</th>
+              <th>Population</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredData.slice(0, 100)">
+              <td>{{ item.countryName }}</td>
+              <td>{{ item.countryCode }}</td>
+              <td>{{ item.year }}</td>
+              <td>{{ item.value | number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p *ngIf="filteredData.length > 100" class="table-note">
+        Showing first 100 of {{ filteredData.length }} records
+      </p>
+    </div>
+  </div>
+</div>

@@ -3,10 +3,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [DashboardComponent],
   template: '<app-dashboard></app-dashboard>',
-  styleUrl: './app.css'
+  styles: []
 })
-export class App {
+export class AppComponent {
   title = 'my-dashboard';
 }
