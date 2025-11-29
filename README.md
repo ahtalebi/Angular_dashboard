@@ -1,59 +1,112 @@
-# MyDashboard
+# 🌍 Population Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+An interactive web-based dashboard for visualizing global population data from 1960-2023.
 
-## Development server
+![Dashboard Preview](screenshot.png)
 
-To start a local development server, run:
+## Features
 
+- 📊 **Interactive Line Charts** - Track population trends over time
+- 📈 **Bar Charts** - Compare top 10 countries by population
+- 🔍 **Dynamic Filters** - Filter by country and year
+- 📋 **Data Table** - View and explore raw data
+- 🎨 **Modern UI** - Beautiful gradient design with responsive layout
+
+## Tech Stack
+
+- **Framework**: Angular 21
+- **Charts**: Chart.js
+- **Language**: TypeScript
+- **Styling**: CSS3
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v20 or higher)
+- npm
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/population-dashboard.git
+cd population-dashboard
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Run the development server
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Open your browser to `http://localhost:4200`
 
-## Code scaffolding
+## Data Source
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The dashboard uses population data with the following structure:
+- Country Name
+- Country Code
+- Year (1960-2023)
+- Population Value
 
-```bash
-ng generate component component-name
+## Project Structure
+```
+src/
+├── app/
+│   ├── dashboard/              # Main dashboard component
+│   │   ├── dashboard.component.ts
+│   │   ├── dashboard.component.html
+│   │   └── dashboard.component.css
+│   ├── data.service.ts         # CSV data loading service
+│   └── app.ts                  # Root component
+└── public/
+    └── data.csv                # Population dataset
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Usage
 
+1. **View Population Trends**: The line chart shows population changes over time for selected countries
+2. **Compare Countries**: The bar chart displays the top 10 most populous countries for any selected year
+3. **Filter Data**: Use the dropdown menus to filter by specific country or year
+4. **Explore Data**: Scroll through the data table to see detailed records
+
+## Building for Production
 ```bash
-ng generate --help
+ng build --configuration production
 ```
 
-## Building
+The build artifacts will be stored in the `dist/` directory.
 
-To build the project run:
+## Deployment
 
+### GitHub Pages
 ```bash
-ng build
+ng build --base-href "/population-dashboard/"
+npx angular-cli-ghpages --dir=dist/my-dashboard/browser
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Vercel/Netlify
+Simply connect your GitHub repository and they'll auto-deploy!
 
-## Running unit tests
+## Contributing
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-```bash
-ng test
-```
+## License
 
-## Running end-to-end tests
+MIT License - feel free to use this project for learning or production.
 
-For end-to-end (e2e) testing, run:
+## Author
 
-```bash
-ng e2e
-```
+Your Name - [Your GitHub Profile](https://github.com/YOUR_USERNAME)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Acknowledgments
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Population data source: [Add your data source here]
+- Built with Angular and Chart.js
+- Inspired by modern data visualization tools
